@@ -120,6 +120,12 @@ app.get("/p/:id", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server Running On PORT ${PORT}`);
-});
+
+
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => {
+    console.log(`Server Running On PORT ${PORT}`);
+  });
+}
+
+module.exports = app;
